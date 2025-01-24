@@ -3,6 +3,7 @@ from typing import Literal, Optional
 
 class CreateReservationDTO(BaseModel):
     client: str
+    clientId: str
     status: Literal["agendada", "em andamento", "finalizada"]
     day: int
     month: int

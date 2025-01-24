@@ -25,8 +25,16 @@ class LoginUseCase:
             return {"status": "error", "message": "Senha incorreta, tente novamente mais tarde."}
 
         token = jwt.encode({"email": client.email, "id": str(client.id)}, os.getenv("CLIENT_JWT_SECRET"))
+        
+        print(token)
 
-        response.set_cookie(key="client_auth_token", value=f"Bearer {token}", httponly=True)
+        response.set_cookie(key="client_auth_token", 
+                            value=token,  
+                            httponly=False,
+                            secure=True,
+                            samesite="None", 
+                            max_age=3600,
+                            path="/",)
         
         response.status_code = 202
         return {"status": "success", "message": "Acesso permitido"}

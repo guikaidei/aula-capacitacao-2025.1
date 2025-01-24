@@ -56,7 +56,7 @@ class ReservationRepository:
         return reservations_list
     
     def get_reservations_by_client(self, client_id: str) -> list:
-        reservations = ReservationModel.objects(client=client_id)
+        reservations = ReservationModel.objects(clientId=client_id)
         reservations_list = []
         for reservation in reservations:
             reservation_dict = reservation.to_mongo().to_dict()

@@ -10,12 +10,13 @@ class CreateReservationUseCase:
 
     def execute(self, create_reservation_dto: CreateReservationDTO, response: Response, request: Request):
 
-        if not create_reservation_dto.client or not create_reservation_dto.day or not create_reservation_dto.month or not create_reservation_dto.year or not create_reservation_dto.inicial_time:
+        if not create_reservation_dto.client or not create_reservation_dto.clientId or not create_reservation_dto.day or not create_reservation_dto.month or not create_reservation_dto.year or not create_reservation_dto.inicial_time:
             response.status_code = 407
             return {"status": "error", "message":"faltam informações"}
 
         reservation = Reservation(
                 client = create_reservation_dto.client,
+                clientId = create_reservation_dto.clientId,
                 status = "agendada",
                 day = create_reservation_dto.day,
                 month = create_reservation_dto.month,

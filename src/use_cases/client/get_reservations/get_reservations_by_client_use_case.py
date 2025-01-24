@@ -7,7 +7,6 @@ class GetReservationByClientUseCase:
         self.reservation_repository = reservation_repository
 
     def execute(self, client_id: str, response: Response, request: Request):
-
         reservations = self.reservation_repository.get_reservations_by_client(client_id)
         if not reservations:
             response.status_code = 407

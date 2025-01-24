@@ -20,7 +20,7 @@ def test():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],          # URL do front-end permitido
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],          # URL do front-end permitido
     allow_credentials=True,                  # Permitir envio de cookies ou headers de autenticação
     allow_methods=["*"],                     # Permitir todos os métodos HTTP (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],                     # Permitir todos os headers

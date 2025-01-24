@@ -6,6 +6,7 @@ dotenv.load_dotenv()
 class Reservation(BaseModel):
     _id: str
     client: str
+    clientId: str
     status: Literal["agendada", "em andamento", "finalizada"]
     day: int
     month: int

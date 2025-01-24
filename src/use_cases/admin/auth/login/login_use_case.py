@@ -26,7 +26,15 @@ class LoginUseCase:
 
         token = jwt.encode({"email": admin.email, "id": str(admin.id)}, os.getenv("ADMIN_JWT_SECRET"))
 
-        response.set_cookie(key="admin_auth_token", value=f"Bearer {token}", httponly=True)
-        
+        response.set_cookie(
+            key="admin_auth_token",
+            value=token,
+            httponly=False,
+            secure=True,  
+            samesite="None",  
+            max_age=3600,
+            path="/",
+        )        
+
         response.status_code = 202
         return {"status": "success", "message": "Acesso permitido", "token": token}

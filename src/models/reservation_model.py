@@ -11,6 +11,7 @@ class ReservationModel(Document):
     ]
 
     client = StringField(required=True)
+    clientId = StringField(required=True)
     status = StringField(required=True)
     day = IntField(required=True)
     month = IntField(required=True)

@@ -14,7 +14,7 @@ class RegisterUseCase:
             response.status_code = 406
             return{"status": "error", "message": "Cadastro não realizado, pois falta informações"}
 
-        client = client(**register_dto.model_dump())
+        client = Client(**register_dto.model_dump())
 
         self.client_repository.save(client)
 
